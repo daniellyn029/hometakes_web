@@ -1,0 +1,1731 @@
+<script>
+
+  function fullScreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if(element.webkitRequestFullscreen ) {
+      element.webkitRequestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if(element.msRequestFullscreen) {
+    	element.msRequestFullscreen();
+    }
+  }
+
+  function cancelFullScreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+
+  jQuery.event.add(window, "resize", FullscrenONOFF);
+
+  function FullscrenONOFF() {
+    var checkFullscreen = ((typeof document.webkitIsFullScreen) !== 'undefined') ? document.webkitIsFullScreen : document.mozFullScreen;
+    if (checkFullscreen) {
+      $('.ms-slide-vcbtn').trigger('click');               
+    } 
+  }
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Hometakes Website</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- <link href="assets/css/basic/style_2.css" rel="stylesheet">
+  <link href="assets/css/lib/kube.min.css" rel="stylesheet"> -->
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.18.0/sweetalert2.min.css" rel="stylesheet">
+
+
+  <!-- =======================================================
+  * Template Name: Arsha - v2.3.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<style type="text/css">
+  .units-split .unit-20 {
+      /*width: 17%;*/
+      width: 16.65%;
+  }
+  .new_popup,.new_popup p,.new_popup h1{
+    font-family: 'Kanit', sans-serif !important;
+  }
+  .uxr-modal-content{
+    overflow-y: hidden !important;
+  }
+  .uxr-modal-container{
+    width: 45%;
+    border-radius: 0px;
+    border: 2px dotted #c5d5ed;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  }
+  .close_btn {
+    cursor: pointer;
+    right: 0px;
+    position: absolute;
+    top: 10px;
+    left: auto;
+  }
+  .close_btn:hover{
+    opacity: 0.6;
+  }
+  .popup_logo{
+    width: 225px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+  }
+  .popup {
+    padding: 70px 20px 0px;
+} 
+.popup_first_h1{
+  color:#111;
+  font-size: 30px;
+  font-weight: 600 !important;
+  line-height: 36px;
+}
+.popup_sec_h1{
+  color:#111;
+  font-weight: 700 !important;
+  font-size: 40px;
+}
+.pop_last_h1{
+  color:#000000;
+  font-size:14px;
+  text-align: left;
+  line-height: 20px;
+}
+.uxr-modal-container::before{
+    content: '';
+    position: absolute;
+    border: 30px solid #597aaa;
+    right: 0px;
+    bottom: 0px;
+    border-left: 30px solid transparent;
+    border-top: 30px solid transparent;
+    z-index: 0;
+}
+@media (max-width: 768px){
+  .uxr-modal-container {
+      width: 90%;
+      position: absolute;
+  }
+  .popup_first_h1 {
+      font-size: 20px;
+  }
+  .popup_first_h1 span{
+    font-size: 22px !important;
+  }
+  .popup_sec_h1 {
+      font-size: 26px;
+  }
+   .popup_logo{
+    width: 190px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px){
+  .uxr-modal-container {
+      width: 90%;
+      position: absolute;
+  }
+}
+
+</style>
+
+<body>
+  <div id="preloader" style="display: none;"></div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="index.html">HOMETAKES</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <!-- <li class="active"><a href="index.html">Home</a></li> -->
+          <li><a href="#about">About</a></li>
+          <li><a href="#our_products">Our Products</a></li>
+          <!-- <li><a href="#portfolio">Portfolio</a></li> -->
+          <li><a href="#team">Testimonials</a></li>
+          <li class="drop-down"><a href="">Our Portfolio</a>
+            <ul>
+              <!-- <li>
+                <a class="photolink" onclick="fullScreen(document.getElementById('viewsstyle--slideshow--block'))" href="#"><i class="fa fa-camera"></i><br>VIEW OUR<br> PHOTOGRAPHY</a>
+              </li> -->
+        
+              <!-- <li><a href="#">Video Tours</a></li> -->
+              <li><a href="virtual_staging.html" target="_blank" >Virtual Staging</a></li>
+              <!-- <li><a href="#">Drop Down 4</a></li> -->
+            </ul>
+          </li>
+          <li><a href="https://hometakes-support.com/helpdesk/User/Login?ReturnUrl=%2fhelpdesk%2f" target="_blank">Support Tickets</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+      <!-- <a href="#about" class="get-started-btn scrollto">Creat Account</a> -->
+      <a href="#about" class="get-started-btn scrollto">Login</a>
+
+    </div>
+
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Is your listing void of Furniture?</h1>
+          <h2>Let us Virtual Stage it!</h2>
+          <div class="d-lg-flex">
+            <a href="https://my.matterport.com/show/?m=B5xvv8pwUTN&brand=0" target="_blank" class="btn-get-started">EXPERIENCE A MATTERPORT 3D TOUR NOW!</a>
+            <!-- <a href="https://youtu.be/_ACuzw7BaW8" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a> -->
+            <!-- <a href="https://my.matterport.com/show/?m=B5xvv8pwUTN&brand=0" target="_blank"> Experience a MATTERPORT 3D TOUR<i class="icofont-play-alt-2"></i></a> -->
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Cliens Section ======= -->
+    <!-- <section id="cliens" class="cliens section-bg">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Cliens Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+          <p>Producing Video, Photography, Matterport 3D Tours & Virtual Reality Tours for marketing homes for sale</p>
+        </div>
+        <div class="row content">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/sRJnL9PwKVc">
+          </iframe>
+        </div>
+       
+        <!-- <div class="row content">
+          <div class="col-lg-6">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <a href="#" class="btn-learn-more">Learn More</a>
+          </div> 
+        </div> -->
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <!-- <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+            <div class="content">
+              <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              </p>
+            </div>
+
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                    <p>
+                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
+                    <p>
+                      Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
+                    <p>
+                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                    </p>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Why Us Section -->
+
+    <!-- ======= Costumer loyalty======= -->
+    <section id="costumer_loyalty" class="skills section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <!-- <img src="assets/img/skills.png" class="img-fluid" alt=""> -->
+            <img src="assets/img/costumer.png" class="img-fluid" alt="asdsa">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <h3>Our Costumer Loyalty Program</h3>
+            <p class="font-italic">
+              Make us your Exclusive Tour Provider by joining our Customer Loyalty Program and we'll give you the keys to unlock our full library of "Town and Amenity Videos" to place on your Website* for FREE!  Yes, we said for FREE!
+            </p>
+            <p class="font-italic">
+              Keep visitors on your website longer by engaging them in Video. Out of State and even Local visitors (buyers) want to know about any amenities that a Community or Condominium has to offer. This information is vital to listings that are located in communities where there are amenities so why would you want to leave it off of your website. <a href="https://www.advancedwebranking.com/blog/11-reasons-why-video-is-better/" target="_blank">Here are 11 Reasons why video is better than any other medium</a> for showing your web visitors around town and inside communities.
+            </p>
+            <p class="font-italic">
+              Want to see what they could look like on your website? <a href="" target="_blank">Take a look here to see how one of our clients has implemented them on their web site.</a>
+            </p>
+            <p class="font-italic">
+              To join and see our complete list of Amenity & Town tour Videos (over 200) simply <a href="https://hometakes-support.com/helpdesk/Tickets/New" targer="_blank">click here</a> to email us with the subject line saying “I’m Interested in your Loyalty Program”. 
+            </p>
+            <br>
+            <p>
+              * Loyalty Program does not apply to Real Estate Brokerages. 
+            </p>
+        
+            
+
+            <!-- <div class="skills-content">
+
+              <div class="progress">
+                <span class="skill">HTML <i class="val">100%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">CSS <i class="val">90%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">JavaScript <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">Photoshop <i class="val">55%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+            </div> -->
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End costumer_loyalty Section -->
+
+    <!-- ======= OUR PRODUCTS======= -->
+    <section id="our_products" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Our Products</h2>
+        </div>
+        <div class="row content">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/46AcTcvNctw">
+          </iframe>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="">Lorem Ipsum</a></h4>
+              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Sed ut perspici</a></h4>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Magni Dolores</a></h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-layer"></i></div>
+              <h4><a href="">Nemo Enim</a></h4>
+              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+            </div>
+          </div>
+
+        </div> -->
+
+      </div>
+    </section>
+    <!-- End Our Products Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3>Call To Action</h3>
+            <p> Email or Contact us Now!</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#contact">Call To Action</a>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <!-- <section id="portfolio" class="portfolio section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">App</li>
+          <li data-filter=".filter-card">Card</li>
+          <li data-filter=".filter-web">Web</li>
+        </ul>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Portfolio Section -->
+
+    <!-- ======= PHOTOGRAPHY ======= -->
+    <!-- <section id="photography" class="photography">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2> VIEW OUR PHOTOGRAPHY </h2>
+        </div>
+        <div class="row contents">
+          
+      
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End PHOTOGRAPHY Section -->
+
+    <!-- ======= VIDEO TOURS ======= -->
+    <!-- <section id="video_tours" class="video_tours section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2> VIEW OUR VIDEO TOURS </h2>
+        </div>
+        <div class="row content">
+          
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End VIDEO TOURS Section -->
+
+    <!-- ======= VIRTUAL STAGING======= -->
+    <!-- <section id="virtual" class="virtual">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Virtual Staging</h2>
+        </div>
+        <div class="row content">
+          
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End VIRTUAL STAGING Section -->
+
+    <!-- ======= Team Section /Testimonials======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+        </div>
+        <div class="row content">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/_ACuzw7BaW8">
+          </iframe>
+        </div>
+        
+        <!-- <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Product Manager</span>
+                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> -->
+
+      </div>
+    </section>
+    <!-- End Team Section -->
+
+    <!-- ======= Services Section /OUR PRODUCTS======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Help</h2>
+        </div>
+        <div class="row content">
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/8nUTBaVXEz0">
+          </iframe>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <!-- <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Pricing</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="box">
+              <h3>Free Plan</h3>
+              <h4><sup>$</sup>0<span>per month</span></h4>
+              <ul>
+                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+              </ul>
+              <a href="#" class="buy-btn">Get Started</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="box featured">
+              <h3>Business Plan</h3>
+              <h4><sup>$</sup>29<span>per month</span></h4>
+              <ul>
+                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
+                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+              </ul>
+              <a href="#" class="buy-btn">Get Started</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="box">
+              <h3>Developer Plan</h3>
+              <h4><sup>$</sup>49<span>per month</span></h4>
+              <ul>
+                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
+                <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
+                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+              </ul>
+              <a href="#" class="buy-btn">Get Started</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-1">HOW LONG WILL THE APPOINTMENT TAKE?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
+                <p>
+                  A shoot can take anywhere from 1 to 5 hours depending on the package ordered. We normally run a back to back schedule so please arrive prior to your appointment time to stage the home.  Flythrough 13 and 18 packages are allocated 1 hr.,  Flythrough 25 packages 1 hr. 15 mins.,  Showcase packages 1 hr. 30 mins., Premier packages 3 hours and Ultimate 5 hours.  All times are calculated from photographer arrival to departure.  Adding ‘Plus, Premium and Supreme' options will add 5, 10 & 15 minutes to the appointment time respectively.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">HOW LONG SHOULD IT TAKE BEFORE I GET MY PHOTOS AND VIDEO TOUR LINKS BACK AFTER THE SHOOT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-parent=".faq-list">
+                <p>
+                  Photos will post to your account the next day.  The Video tour will also post to your account the next day. Did you guys really say the next day?  We sure did!  we know how important it is for you to impress your sellers with how 'on the ball' you are and getting the listing into MLS right away.  No two or three day turn around time here!
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-3" class="collapsed">HOW DO I DOWNLOAD MY PHOTOS FOR PRINTING AND WHAT SHOULD I USE FOR MLS? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-parent=".faq-list">
+                <p>
+                  Simply log in to your Hometakes account and look for the "download photos" next to the property address or you can click the "download photos" link in the email that was sent to you. After clicking the link, you will be prompted to download the zipped file and to choose where to save it on your PC (A Mac will automatically start the download and save it to your downloads folder).  Then double-click on the zip file to extract the folders. Once extracted, you will see Original resolution and MLS/Low resolution photo folders. Depending on your connection speed it may take a while to download the zip file. The zip files can be as large 500 MB depending on the package ordered.  An Original size photo can be as large as 20 MB or more.  The photos from this folder should be used for print only.  For MLS and uploading to the web, you should use photos from the file named "Photos optimized for MLS placement". Trying to upload Original size photos to MLS will not work as MLS has a limit on the size of the file that can be uploaded and most of the Original sized photos are too large.
+                </p>
+                <p>
+                  Due to server space on our site, the zip file links are automatically deleted from our server after 60 days.  If you are reading this and it has been longer than 60 days since we filmed your tour, this does not mean that you cannot download your photos once the 'Download' link is no longer active.  It just means that you won't be able to download them all in one file.  Instructions on how to individually download them are provided by clicking the 'view download instructions' link or by Clicking Here.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-4" class="collapsed">I NORMALLY RECEIVE AN EMAIL SAYING THAT MY PHOTOS OR VIDEO TOUR IS COMPLETE BUT I DIDN’T THIS TIME. WHY IS THAT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-parent=".faq-list">
+                <p>
+                  The VERY BEST WAY to get your photos or tour links once they have been completed, is to log in to your account and get them from there.
+                </p>
+                <p>
+                  If you wish to forward photo or video links to anyone, simply log into your account and copy and paste them to your email. The emails that tell you that your tours and photos are ready are system generated one time only, we cannot duplicate them and resend them to you.
+                </p>
+                <p>
+                  Please note: You should wait until the estimated delivery time of 2 business days for photos and 3 business days for video before emailing us. Time periods are calculated from the next business day after the appointment. If you dont see them in your account after that period of time, feel free to contact us.   Quite often our system emails will not make it to your inbox or even your spam/junk folder.  This may be due to your webserver marking our email address as a spammer. Typically, this happens with AOL or Comcast email addresses but sometimes happens with others too.  We strongly suggest using a different company other than AOL or Comcast, plus they are not considered 'business professional' email addresses.  If you must have one thats not your name such as john@johndoe.com, the best alternative is a Gmail address.  It's free and generally more reliable in allowing the emails from our system to get through to you.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5" class="collapsed">THE DOWNLOAD LINK FOR THE PHOTOS ISN'T AVAILABLE ANYMORE, CAN I STILL DOWNLOAD MY PHOTOS? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-parent=".faq-list">
+                <p>
+                  Contact us with the property address and we will prepare a new download zip file link and email it to you.  The reason why your zip links no longer appeared in your Hometakes account is because after 60 days the files are removed from our server due to storage requirements.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-6" class="collapsed">THERES AN IMAGE OUT OF FOCUS, WHAT CAN BE DONE ABOUT IT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-6" class="collapse" data-parent=".faq-list">
+                <p>
+                  If an image is out of focus, the photographer can go back to the property to reshoot the image (of course, no charge).   Or, if you prefer we will note your account and give you three additional photos on your next tour.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-6" class="collapsed">THERES AN IMAGE OUT OF FOCUS, WHAT CAN BE DONE ABOUT IT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-6" class="collapse" data-parent=".faq-list">
+                <p>
+                  If an image is out of focus, the photographer can go back to the property to reshoot the image (of course, no charge).   Or, if you prefer we will note your account and give you three additional photos on your next tour.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="700">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-7" class="collapsed">CAN I CALL HOMETAKES? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-7" class="collapse" data-parent=".faq-list">
+                <p>
+                  Our support representatives don't work for anyone else but Hometakes.  The owner of Hometakes personally trains each and every one of them in all areas of operations so that they know what he knows about the business.  Outside of normal business hours, they still monitor the voicemail and email tickets and will reply as soon as they see one.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="800">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-8" class="collapsed">CAN I GET THE VIDEOGRAPHERS PHONE NUMBER? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-8" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure you can.  If its your first appointment, ask the videographer for their cell phone number when you first meet them and they’ll give it to you.  You will generally get the same videographer as they work in geographical areas.   A lot of agents dont pick up to numbers that they dont recognize so please register them in your phones database because they may need to call you and get a responce for gate clearance right away. Please note: they will refer you to us if you ask them any support questions.  You should only call them if something changes on your appointment such as a new gate code has been implemented since you booked or any other similar issues.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="900">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-9" class="collapsed">HOW CAN I FIND OUT DETAILED PRICING ON YOUR PACKAGES? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-9" class="collapse" data-parent=".faq-list">
+                <p>
+                  You can simply create an account with us an you will be able to access our pricing and packages with samples that show you exactly what you get in a package. Or you can simply click on Pricing on our Home Page.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1000">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-10" class="collapsed">HOW DO I SCHEDULE A TOUR? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-10" class="collapse" data-parent=".faq-list">
+                <p>
+                  The first thing you should do prior to placing an order is to get three separate times/dates that work with yours or your sellers schedule (we film Monday -Friday only).  Once you have 3 times, log in to your account and choose a tour package.  Choose your 3 appointment times and submit your order.  If you ordered after 6 PM the previous day or on the same day, you'll receive an email specifying the date and time of your appointment between 4 pm & 6 pm.  You may receive an email earlier, however, during busy times, we sometimes need to see all appointment requests from the last 20 hours worth of orders.  This is so that we can schedule the videographer as efficiently and map out the best possible route for that day.  So if you are used to getting a quicker response, don't worry, we have not forgotten about you.
+                </p>
+                <p>
+                  If you do not receive an email, it may have been blocked by your email service.  If this happened, simply log in to your account and you'll see the date and time of your appointment under the pending tour section. The videographer will call you the day before your appointment to confirm with you the appointment.  He will leave a message if you cannot pick up.  However,  please be sure to call or text them back or your appointment may be cancelled if you cannot be reached.
+                </p>
+              </div>
+            </li>
+
+            <!-- <li data-aos="fade-up" data-aos-delay="1100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-11" class="collapsed">WHEN WILL I HEAR FROM THE PHOTOGRAPHER PRIOR TO THE APPOINTMENT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-11" class="collapse" data-parent=".faq-list">
+                <p>
+                  The photographer will only call you if they have been held up for any reason such as a traffic accident.  However, you should get a text from our system reminding you of our appointment 30 mins. prior to your appointment time.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-12" class="collapsed">HOW DO I CANCEL MY APPOINTMENT OR RESCHEDULE A TOUR FOR A DIFFERENT TIME? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-12" class="collapse" data-parent=".faq-list">
+                <p>
+                  All cancellations or re-scheduling of appointments must be made through your account.  Our scheduling system is tied to the appointment set in your account and because of this we cannot accept cancelations emailed or through our ticketing system.  To cancel or reschedule, simply login to your account and click the re-schedule/cancel link.  If you are just canceling and are not ready to re-schedule simply click the link and close your browser.  When you are ready to re-schedule, just log back on and click the re-schedule link.  If you want to cancel your order because you no longer need the tour, contact us and tell us that you want to delete the order from our system.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-13" class="collapsed">WHAT IS ‘CANCELATION INSURANCE'? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-13" class="collapse" data-parent=".faq-list">
+                <p>
+                  Cancelation insurance allows you to cancel the appointment all the way up to a 1 prior to the appointment.  If the insurance is not taken, we require 18 hours notice if you want to avoid a $30 rescheduling/cancelation fee.  Remember, weather can change in an instant in Florida, so if you are considering canceling due to overcast weather, leave it as close as you can to the hour before the appointment as we have seen weather go from overcast to sunny in an instant.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-14" class="collapsed">MAY I UPGRADE MY PACKAGE OR ADD ADDITIONAL PHOTOS TO MY PACKAGE ON THE DAY OF THE SHOOT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-14" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure you can.  Providing the photographer has time to shoot the upgrades, you’ll simply sign the upgrade sheet.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-15" class="collapsed">I WANT TO UPLOAD THE VIDEO TOUR TO MY SOCIAL NETWORKING SITES SUCH AS FACEBOOK AND YOUTUBE. HOW DO I DO THAT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-15" class="collapse" data-parent=".faq-list">
+                <p>
+                  When ordering your tour, the option 'original video file' should already be checked and added to your order ($10).   When the file is ready, we will send you a link so that you can download the file.  However, if you unchecked it and have now decided that you want it, simply send us an email and we will add the $10 fee to your account and send you the link.
+                </p>
+                <p>
+                  After saving the file to your computer you will then be able to upload the video to your social networking sites.  Please note that the 'original video file' is for the sole purpose of uploading the video to your own social networking video sites such as YouTube, Facebook and Twitter. It is by no means a release of the copyrighted material from us.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-16" class="collapsed">WHAT IS A TOWN OR AMENITY TOUR? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-16" class="collapse" data-parent=".faq-list">
+                <p>
+                  A Town or Amenity tour is a narrated video of the town or facilities where the property is located.  They educate the buyers that are new to the area or not familiar with the amenities of a community or condo. As agents know so well, the home buying process is not entirely dependent on the likability of the home.  The area (town) and any amenities are just as important when making their purchase.  Town and Amenity tours are automatically shown via video and then added to your package after you enter the zip code address into the address field on our order form.  If you do not want either, simply uncheck the pertaining check boxes.  If we dont have an amenity or town tour for the property in our system we will be happy to make them for you.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1700">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-17" class="collapsed">I ORDERED A NEW AMENITY TOUR BUT DIDN’T SEE IT ATTACHED TO MY HOME TOUR. WHERE IS IT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-17" class="collapse" data-parent=".faq-list">
+                <p>
+                  Producing an amenity tour takes longer to produce than a home tour.  It may take two weeks to produce after the home tour is ready.  The process in producing a new amenity tour is much different to making a home tour.  The process works like this:  First the videographer that shot the video has to edit the tour (this is not done in our regular edit department). They then upload the tour to a temporary website.  The link to the video is then sent to the script writer so that they can see and write about the amenities.  However, before they can write a script, they have to research the amenities online through various websites. Once written, the script is then sent to the narrator for recording and then sent back to us.  We then forward it to the videographer for it to be edited into the video. The video is then compressed into various formats and sent to the edit department for upload to our server. Once uploaded, it is added to our system and then placed next to your home tour on the tour template.  The price of this is $25. Amenity tours can be added to an agent's website for a yearly license fee of $249.  When a license is purchased, the agent no longer pays for the addition of that amenity tour in that community for any subsequent home tour that they order.  The original file for the amenity tour is not available for purchase.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1800">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-18" class="collapsed">I CAN’T SEE THROUGH THE WINDOWS ON THE VIDEO TOUR AND THE WINDOWS ARE BRIGHT WHITE, YET I CAN SEE CLEARLY THROUGH THE WINDOWS ON MY HDR PHOTOS. HOW IS THAT POSSIBLE? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-18" class="collapse" data-parent=".faq-list">
+                <p>
+                  In order for you to understand why this can happen, we need to explain light sources and how it affects a camera.  When the camera is pointing toward a window, unlike the human eye which can clearly see both the inside and outside of a room at the same time, the camera is only able to see one light source at a time.  Daytime outside natural light is always much brighter than interior light, even with the lights on.  Because of this, you have to set the exposure on the video camera to see one or the other.  If its an interior video scene, naturally the exposure is set to see the inside of the room. This most often will result in the windows being whited out on the video sometimes to the point of not being able to see through the window at all (especially if it's a bright sunny day outside).  If there is a view from the window that you wish to show, we overcome this by setting the camera on auto exposure and panning from the room to the view outside.  When you view your video, you will notice that as the camera gradually points toward whats outside the window that the room darkens (sometimes to almost black).  This should clearly demonstrate the difference in the brightness between inside exposure and outside exposure.
+                </p>
+                <p>
+                  At this point you may be saying 'but I've been able to see whats outside and whats inside at the same time on some of your videos before!’. So how can the above explanation be true?  We’ll explain how this can happen under certain circumstanses.
+                </p>
+                <p>
+                  If the sun is blocked due to could coverage, this can greatly lower the brightness of the outside light. Add to this that the suns is position is on the opposite side of the home relative to the window, plus a patio overhang such as a lanai and a heavy tint on the windows, and it results in lowering the brightness of the exterior light.  As the outside light has been lowered, its now closer to the exposure of the inside light thereby allowing you to see through the window at the same time. Theres only way we can guarantee being able to see both inside and outside at the same time and thats by ordering our custom Ultimate Package.  And why does that make a difference?  Because we shoot the inside of the home in the evening hours after the sun has set.  We choose the time to film when the outside and inside light are even exposures thus allowing to see clearly whats outside and whats inside. 
+                </p>
+                <p>
+                  So whats the deal with photography? With regular photography you are capturing a single image again means that the camera can only be exposed to one source of light, either inside or outside. Again, if its the inside you are shooting, then the exposure is set for that which can result in the window being whited out.  To be able see both the inside and outside the window in a photo, then High Dynamic Range photography is needed (otherwise known as HDR photography).  With HDR photography, multiple exposures are taken set to capture both inside and outside light sources.  They are then merged together using special software (each done by hand) which results in a photo where you can see whats both inside and outside.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="1900">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-19" class="collapsed">IF I ORDER A TOUR CAN I GET A REFUND ONCE ORDERED? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-19" class="collapse" data-parent=".faq-list">
+                <p>
+                  Providing we have not filmed the property (and there is no cancelation fee to pay) you can get a full refund.  We cannot partially refund properties where the videography and photography has been shot.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2000">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-20" class="collapsed">WHAT IS HDR PHOTOGRAPHY? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-20" class="collapse" data-parent=".faq-list">
+                <p>
+                  Contrary to what a lot of people think, HDR photography stands for High dynamic Range and not High Definition Range photography.  High-dynamic-range photographs are achieved by capturing multiple photographs using exposure bracketing, and then merging them into one image using special photographic software.  This process is known as HDR imaging and is a intensive hands on human process.  The camera's 'raw image' format is used because JPG photo format doesn't offer the sharpness of a raw image which is best for the HDR process. Photos taken in JPG format introduce an undesirable lossy compression effect which loses detail in the photo.  With HDR, each photo has to be individually manipulate to adjust the best parts of the exposure of each of the multiple photographs that are taken.  This can only be achived by someone who specializes in the art of HDR manipulation.  This specific skill set and the aspect that each photograph has to be manipulated by a human are some of the reasons why HDR images carry a slightly more higher cost. However, the results are significantly better than standard photography.
+                </p>
+                <p>
+                  With HDR photography, you will be able to see what is outside of a window instead of seeing a 'whited out' window or whats known as 'window blowout'.  This is what normally occurs with standard photography.  Also with standard photogrpahy, the light that comes through the window may make the rest of the photo appear as though it were 'washed out' due to additional light from the window. 
+                </p>
+                <p>
+                  HDR images are sharper due to the fact that the original images are taken in RAW format.  Color accuracy on a standard photograph is considerably less than HDR photography as only one exposure is taken for standard photography.  Because of this, colors in the photos (walls, flooring, furniture etc.) can be effected by the light conditions in the room at the time that the photo is taken.  This means that colors may appear brighter or duller and not as true of a representation of the colors in real life to the eye.  With HDR, because of the fact that multiple shots are taken with various exposures, the resulting photo can be manipulated to produce a much more 'color accurate' photo.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-21" class="collapsed">HOW DO I OPEN AND SAVE THE PHOTO ZIP FILE I JUST DOWNLOADED? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-21" class="collapse" data-parent=".faq-list">
+                <p>
+                  For Mac users, zipped files automatically unzip themselves and can be found in the downloads folder.  For P.C.'s: After downloading the zip file, you have to extract the photos from the zip folder. During the extraction process, your P.C. will automatically create a normal folder where your photos can be found. Once completed, you should upload your photos to MLS from the new folder it created.  If you dont extract the files from the zip folder, you wont be able to upload to any website (including MLS).  After you have completed the extraction process, you should delete then delete the zip folder. If you’ve never extracted files from a zip folder before, click this link to view a video tutorial.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-22" class="collapsed">WHY CAN’T I UPLOAD THE PHOTOS YOU SENT ME TO THE MLS OR FOR THAT MATTER ANY OTHER WEBSITE? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-22" class="collapse" data-parent=".faq-list">
+                <p>
+                  You're most likely trying to upload the photos directly from the zip file that you downloaded from us.  The internet will not allow you to directly upload from zip file folders (zip files have a little zipper going across them on PC's). After downloading the zip file from us, you have to extract the photos from the zip folder. This should create and place the photos into a normal folder but sometimes you have to manually save the photos to another folder.  Once they are saved to a new folder, then and only then, can they be uploaded to your MLS or other websites.  After you have completed this process, you should delete the zip folder from your computer so that you do not mistakenly try to upload photos from the zip file folder again.  On Mac computers, the process is always done automatically as soon as you open the zip folder.  However,  if you’ve never extracted files from a zip folder on a P.C. then  View this short YouTube tutorial on how to do it.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-23" class="collapsed">MAY I UPGRADE MY PACKAGE OR ADD ADDITIONAL PHOTOS TO MY PACKAGE ON THE DAY OF THE SHOOT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-23" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure you can.  Providing the photographer has time to shoot the upgrades, you’ll simply sign the upgrade sheet.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-24" class="collapsed">WHY CAN’T I ADD CANCELATION INSURANCE ON THE DAY OF THE SHOOT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-24" class="collapse" data-parent=".faq-list">
+                <p>
+                  Think of it like you declined the Full Collision Damage waiver on a rental car that you rented, had an accident, and then took the car back and asked the rental company if you can now add the insurance. Of course, they couldnt do it as its a insurance against what may happen and not after it happened.  It's advisable to add the insurance to your order it if you are unsure wheter or not you may have to cancel on short notice. Its already defaulted to be added so if you dont want it, you have to uncheck the check box.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-25" class="collapsed">CAN THE PHOTOGRAPHER HELP ME MOVE ITEMS THAT I DONT WANT TO BE SEEN IN THE VIDEO OR PHOTOS IN THE HOME? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-25" class="collapse" data-parent=".faq-list">
+                <p>
+                  If you follow our operations guide on when to arrive and how to prepare the home, then the property should be ready to film as soon as the videographer/photographer arrives.  However, we realize that things don't always go as planned and you may need addtional staging time which our photographer will be happy to accomodate you with provided there isn't an appointment immediately after your appointment.  However, Unfortunately we cannot help with moving or touching anything due to liabilty reasons. Please dont be offended if you ask for help and the photographer tells you they cant.  It really is for liabilty reasons.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2700">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-27" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A VIDEO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-27" class="collapse" data-parent=".faq-list">
+                <p>
+                  No, photoshopping is for photos and not possible on video. Well actually it is but unless you had the budget of multi-million dollar movie, its cost prohibitive.  Video is taken at 30 frames per second.  Each frame would have to be edited individually.  So a 10 second clip would be 300 frames (Multiplied by $20 per frame or more) at it would cost upward of $6000 in addition to taking at least a month to complete.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2800">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-28" class="collapsed">CAN I CHANGE THE MUSIC ON MY VIDEO TOUR NOW THAT THE VIDEO IS COMPLETED OR IS THIS SOMETHING YOU HAVE TO DO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-28" class="collapse" data-parent=".faq-list">
+                <p>
+                  Unfortunately you cannot change it but we can.  Unlike photo slideshows where the music is not part of the tour and is playing in the background and easily changeable, with video the music is embedded into the timeline and is made part of the video.  The only way it can be changed is for the video to be re-edited, recompressed and re-uploaded to the servers.  The cost to do this on Flythrough or Premier tours is $25.  For Showcase and Ultimate packages its $50.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2900">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-29" class="collapsed">CAN I CHANGE TO A DIFFERENT NARRATOR/VOICEOVER NOW THAT THE VIDEO IS COMPLETED OR CAN I ADD OR CHANGE SOME VERBIAGE THAT WAS NOT IN MY ORIGINAL SCRIPT AND HAVE IT ADDED TO THE VIDEO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-29" class="collapse" data-parent=".faq-list">
+                <p>
+                  Yes. The cost for a re-record of the script by a narrator is $75 plus the re-edit fee of $50. Contact us with the details.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3000">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-30" class="collapsed">I CAN SEE THE CAMERA OR PHOTOGRAPHERS REFLECTION IN A MIRROR IN THE PHOTO WHY IS THAT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-30" class="collapse" data-parent=".faq-list">
+                <p>
+                  Unfortunately there are situations where the camera or photographer can be seen in the reflection of a mirror. Rooms with mirrors on multiple walls or mirrors directly opposite the photographer cannot help but reflect the photographer or camera taking the photo.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-31" class="collapsed">MY SELLER DIDN’T LIKE PART OF THE TOUR/SOME OF THE PHOTOS, WHAT CAN BE DONE ABOUT IT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-31" class="collapse" data-parent=".faq-list">
+                <p>
+                  If your tour or photos were not produced to our 'Hometakes format and standards' as seen on our website samples, we will re-edit them for free (or return to re-shoot if necessary). However, if they are to our Hometakes format and standards, a reshoot fee will apply if you want us to return to the property.  Please understand that a photo may look different if shot at a different time of day.  However, it will not count as an unacceptable shot if the exposure is a little lighter or darker because of the exterior lighting (such as the sun pointing toward the camera on the front of home shot).  Please understand that we can't change the position of the sun.   If you feel the need to appease your seller, we can return for a reshoot for $75 plus $10 per photo and $25 per video scene.
+                </p>
+                <p>
+                  Our format for a Flythrough video is a walking shot into the room/scene followed by a panning shot (where applicable). You will also get a pan to the view outside on a room with a view to the rear of the property.  This constitutes a 'video scene'.  Depending on your package ordered, depends on how many video scenes you get.  See here for video scenes Vs. Package ordered.  A showcase package may get an extra panning shot depending on the size of the room.  Our format is the same for all packages that are shot, so there's consistency in our product and you always get what is in your package. If you wanted extra footage on a particular room/scene that was important to you (or your seller) you should have notified the videographer that you want to upgrade for extra video footage (or extra scene) to be taken of that room/scene on the day of the shoot.
+                </p>
+                <p>
+                  On rare occasions, an agent has forwarded the tour link to their seller only to find that the seller does not like the style/format of the tour. Again, If you feel the need to appease your seller, we can allow the seller to act as 'Director' to the videographer. They may tell the videographer what to shoot and in the style the seller wants it done.  For example, all walking shots and no panning shots.  However, we would strongly urge you to avoid this if at all possible.  Most likely the tour end up not as good as seen in this example by this seller directed video.  Heres the same video shot in our Hometakes format that  can be seen here if you want to compare the two.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-32" class="collapsed">I CANT FIND THE EMAIL THAT I RECEIVED WITH THE LINK TO MY PHOTOS AND OR VIDEOS OR I DONT EVER REMEMBER RECEIVING IT FROM HOMETAKES. WHAT DO I DO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-32" class="collapse" data-parent=".faq-list">
+                <p>
+                  Just login to your Hometakes account.  There you will find the links to all of your tours and photos.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-33" class="collapsed">I AM TRYING TO SUBMIT AN ORDER BUT NOTHING HAPPENS OR MY ORDER WON'T GO THROUGH <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-33" class="collapse" data-parent=".faq-list">
+                <p>
+                  First we recommend using Safari if you are using a Mac or Explorer when ordering from your computer. We dont recommend ordering from a mobile device (you won't be able to hear the music choices from mobile devices).  If you are using the recommended browsers and your order still wont submit, you will need to clear your temporary internet files. Sometimes browsers get stuck when submitting forms on web pages for unknown reasons and clearing these files works 99% of the time.    Clearing your cache frequently is like the need for changing the oil on your car (only you should do it once a week if you are on the internet everyday). It will only run for so long before it breaks down or starts to splutter like a bad engine.
+                </p>
+                <p>
+                  If you dont know how to do it on the particular browser you are using, we have provided a link (below) that gives instructions on how to clear you cache for most browsers (however, we highly recommend Internet Explorer for PC's and Safari for Mac). After clearing it, YOU MUST CLOSE YOUR BROWSER AND RE-OPEN IT or your computer wont know that it has been reset (its vital that you do this or it still may not work). 
+                </p>
+                <p>
+                  for instructions on how to clear your temporary internet files.<a href="https://www.wikihow.com/Clear-Your-Browser%27s-Cache" target="_blank">Click here</a>
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-34" class="collapsed">HOW DO I PAY FOR A TOUR AND GET A RECEIPT? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-34" class="collapse" data-parent=".faq-list">
+                <p>
+                  When you set up your account, you will recieve an email from newusers@hometakes.com that briefly explains our ordering process.  The email contains a link where you should download our credit card authorization form.  This should be completed and returned prior to your order as we cannot send you an appointment time until we receive your payment info.  You can also download it here by clicking this link.  We only accept credit cards (sorry, no cash or checks).  We accept Visa, Mastercard and American Express.  Your receipt is emailed to you immediatley after you submit your order with the exception of a showcase package if the script has not been completed at the time of your order.  In this is the case, your receipt will be emailed to you after you complete your script. Additons or upgrades to your tour on the day will be billed to your account but not necessarily on the day of the upgrade.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-35" class="collapsed">CAN I REQUEST AN EDIT CHANGE TO THE VIDEO?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-35" class="collapse" data-parent=".faq-list">
+                <p>
+                  We developed a 'Hometakes Format' to our tours and before they are sent to the client they are watched to make sure that meet the standards of any of the videos that can be seen on our youtube channel.  If you want changes to a video you may request an edit change.  Edit changes start from $25 on Flythrough packages and $50 on any other package and will be quoted based on the amount of changes needed.  Please note, that we shoot at 30 FPS and videos cannot be slowed down as they will get jittery (stagger) but can be sped up. If a request is to speed up the entire video by say 5%, it will cost the minimum re-edit fee.
+                </p>
+                <p>
+                  If you would like us to quote you a re-edit of video scenes, such as cutting a scene short, let us know how many you would like us to change.  You must also look at the time counter on the video and quote each scene by the time counter and what needs doing to it.  I.E. "the scene begining at 0:38 and ending at 0:52, I'd like it to end at 0:48 as the owner has decided he does not want the portrait of his wife shown in the video. Another example would be "Instead of the scene beginning at 1:44 through 2:00 please begin it at 1:49.  This also will enable us to provide an exact cost and final custome edit.
+                </p>
+                <p>
+                  There's a re-edit fee even for what may seem to only be a 'small change' to a video.  This is because there is no comparison between a photo tour and a video tour.  A video requires human intervention all the way through the process unlike a photo tour where the pushing of one button on the computer does all the work.  Normal photos are around 5mb.  Compare that with a Video file of 5 Gigabytes or more and the difference is a thousand times larger. This can require up to 4 hours in transcoding the (computer processing), editing, and compression for the web and has to happen no matter how small the change.
+                </p>
+              </div>
+            </li>
+            
+
+            <li data-aos="fade-up" data-aos-delay="3600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-36" class="collapsed">WHY DOESN'T THE 'FULL ADDRESS' APPEAR AT THE START OF THE VIDEO. <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-36" class="collapse" data-parent=".faq-list">
+                <p>
+                  We have a standard format in editing that is followed where we place just the street address at the beginning of the video.  This provides for an uncluttered look on the video.  Theres no reason to put it there because the full address appears on the video template.  Also, as a lot of agents upload the video to their youtube channel and a lot of sellers (and buyers who become the owner) do not want the full address of their property to appear on YouTube.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3700">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-37" class="collapsed">DO YOU SUPPORT HTML VIDEO EMBED CODE FIELDS FOR MLS?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-37" class="collapse" data-parent=".faq-list">
+                <p>
+                  MLS boards with a specific 'HTML video embed code' field DO NOT support Video Tour Templates and because of that its not available from us.  A video tour template is everything else that surrounds the video such as photo tabs or options such as town tour tabs, amenity tour tabs etc.  However, this DOES NOT mean that your video tour cannot be played on MLS.   You can still view it if you upload the un-branded tour link to the 'virtual tour' field on your MLS listing.  Thats the place where our tours belong on MLS <strong>(the 'virtual tour' field)</strong>.  Some MLS's have a second virtual tour link field for Branded tours.  If you don't know where the 'virtual tour field is, your MLS support staff can assist you with that as well as tell you how to upload photos to your listing .  Just remember to tell the MLS support rep. that you are looking for the <strong>'Virtual Tour'</strong> link field and <strong>NOT</strong> the field for an HTML video embed code.  Its actually better to ask them, "how do I upload my 'Virtual Tour' to MLS" and don't mention the word 'video' to them as they'll most likely end up telling you that you need an HTML video emded code (which you don't) if you mention the word video.  
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3800">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-38" class="collapsed">HOW DO I ORDER AND SCHEDULE A TOUR?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-38" class="collapse" data-parent=".faq-list">
+                <p>
+                  After you have created your online account, before we can schedule your tour we will need some payment information.  The instructions on how to get this to us are in the 'new user' email that is sent to you after you create an account.  We accept Amex, Visa and MasterCard.  Once we receive this you can log back in and click on the link that says to order/packages and pricing.   Choose your package and then deselect/select your options for that package and click the 'agree to the terms' check box.  Then click the 'Next' button to complete the property information on the next page.  At the bottom of that page, choose 3 times/dates that work for your seller. Please get 3 times from your seller prior to placing your order and please DO NOT fake any of them.  Theres a good reason why we need 3 times as we try to accomodate one of your choices.  If we cannot accomodate any of them due to them already being booked, we will schedule the next available appointment time on the videographers schedule. Please note that if you placed an order but did not send in your payment information, we cannot schedule your tour until we receive it.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="3900">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-39" class="collapsed">DO YOU OFFER DISCOUNTS FOR LARGER COMPANIES OR VOLUME ORDERING? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-39" class="collapse" data-parent=".faq-list">
+                <p>
+                  At Hometakes, we work at as hard as we can to offer the lowest possible pricing to all agents whether working for a small boutique company or a large national company. We work on smaller profit margins but make up for it with high turnover.  Because our margins are smaller, whether we shoot 1 or 100 tours per year for an agent or company, our price remains the same.  We could raise our prices and play the '25% discount - special offer' or 'buy 5 get one free' game, but we'd rather just give you the lowest possible price in the first place.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="4000">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-40" class="collapsed">WHAT TIMES CAN I SCHEDULE A TOUR AND CAN I SCHEDULE A SHOOT ON A WEEKEND?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-40" class="collapse" data-parent=".faq-list">
+                <p>
+                  Our videographers shoot on Mondays through Friday only and do not shoot on weekends.  Because they work very hard during the week, they need time to 'recharge'.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="4100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-41" class="collapsed">WHAT HAPPENS IF THE WRONG SPELLING OR ADDRESS WAS ENTERED WHEN I ORDERED THE TOUR AND I ONLY JUST NOTICED AFTER THE VIDEO WAS COMPLETED. CAN IT BE CHANGED? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-41" class="collapse" data-parent=".faq-list">
+                <p>
+                  There's a $25 re-edit fee to change the street address of the property because the video has to be re-edited.  We do give fair warning on this when you enter the address into the form online (see screen shot below).   If you still made a mistake and entered the wrong address, check your receipt that's emailed to you right after your order and you'll catch it there as the address you just entered shows on your receipt. Then let us know right away and you'll avoid a re-edit fee.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="4200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-42" class="collapsed">HOW DO I UPLOAD THE ORIGINAL VIDEO FILE TO MY YOUTUBE AND FACEBOOK ACCOUNTS? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-42" class="collapse" data-parent=".faq-list">
+                <p>
+                  If you havent already, you'll need to purchase the original video file for your tour ($10) and download it to your computer.  Then <a href="https://support.google.com/youtube/answer/57407?hl=en" target="_blank">Click here</a> for instructions on how to upload it to YouTube and <a href="https://www.facebook.com/help/154271141375595/" target="_blank"></a>Click Here for instructions on how to upload it to Facebook.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="4300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-43" class="collapsed">CAN I REVIEW THE PHOTOS AND CHECK THE ANGLES TO SEE IF I LIKE WHAT WAS TAKEN? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-43" class="collapse" data-parent=".faq-list">
+                <p>
+                  Actually, the agent or representative who meets the videographer must review the photos that were taken on the day of the shoot.  If you don't like an angle or photo taken, now is the time to fix it.  We cannot come back to reshoot any photos without charge, that's why there is a review process.  It is the reviewers responsibility to check that they have all the rooms & angles that they want.  We advise that you make sure that you order  a package that will fit the needs of the property as under ordering the package will most likely result in the seller pointing out that a photo of something they wanted shown is missing.  Retaking photos after the appointment costs $75 return fee plus the cost of each photo.  You may request that the review of the photos take place on the photographers laptop for a full-size view of the photos.  If you choose to review them on the screen on the back of the camera you may not like what you see when the photos are delivered to you.  We strongly advise you to allow the photographer an extra couple of minutes to transfer the photos to their computer and review them there.   If there's an angle or photo you don't like, they will delete it and retake another.  Please understand that Photographers are not Real Estate agents and sometimes can't differentiate between bedrooms, dens, offices etc. so don't assume that they took all the photos you wanted.  We are happy to give you exactly what you want and that's what the review process is for.  If you sent your assistant, partner or another representative to the appointment, they are responsible for reviewing and approving the photos.  If you do not like what they approved, we cannot reshoot without a fee and suggest that the listing agent be there to approve photos on future shoots.  Although this Q&A is here on our web page, it also appeared on our operations guide which was given to you on your first appointment.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="4400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-44" class="collapsed">HOW MUCH DOES IT COST TO COME BACK AND RE-SHOOT PHOTOS OR VIDEO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-44" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sometimes we are asked to come back to the property to reshoot photos or video as a room at the property has new furniture or the house color has changed.  We can accomodate that! Theres a re-shoot fee of $75 plus the cost of photos ($10 ea.) or video ($25 ea.).   If you want a re-shoot of the video on a Flythrough package, there's a minimum of 2 video scenes ($50).  A reshoot for Showcase packages has a minimum of 3 video scenes ($75).  Both these minimums include the cost of the re-edit of the video but does not include re-editing of the voice over on the showcase package (re-recording of new voiceover costs $75).
+                </p>
+              </div>
+            </li> 
+
+            <li data-aos="fade-up" data-aos-delay="4500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-45" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-45" class="collapse" data-parent=".faq-list">
+                <p>
+                  <strong>MLS asserts that it is prohibited for any members to give out their username and password to a third party.</strong>
+                </p>
+                <p>
+                  <strong>If you would like verbal instructions you should call MLS Support for assistance in uploading your tour or photos to MLS (561-627-4548.  Or you can try using these instructions below. </strong>
+                </p>
+                <p>Instructions for uploading Your Video Tour to MLS:</p>
+                <br><br><br>
+                <span>From Change Listing screen, click Virtual Tour</span>
+                <br>
+                <span>Then Click Add Virtual Tour</span>
+                <br>
+                <span>Enter the link (including https://) of the un-branded tour</span>
+                <br><br>
+                <span>Enter the Description or name that you wish to call your tour.</span>
+                <br>
+                <span>Make sure Unbranded Tour is the Type selected</span>
+                <br><br>
+                <span>Check the check box that says "Open all Virtual Tours in a new window"</span>
+                <span>Click Save Changes</span>
+                <span>If you wish to return to the Change Listing screen without adding the tour, click Return to the edit listing screen.</span>
+              </div>
+            </li>
+          -->
+
+            <!-- <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="2600">
+              <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-26" class="collapsed">CAN YOU PHOTOSHOP SOMETHING OUT OF A PHOTO? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-26" class="collapse" data-parent=".faq-list">
+                <p>
+                  Sure we can. Photoshop services start from $25 per photo.  Depending on the complexity of the item(s) that need photoshopping, it may run higher.  Contact us with with a link to the photo and let us know what you want done and will will let you know the cost.
+                </p>
+              </div>
+            </li> -->
+
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= TICKETS ======= -->
+    <!-- <section id="tickets" class="tickets">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Support Tickets/Questions?</h2>
+        </div>
+        <div class="row content">
+         
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End TICKETS Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>You can contact or email us!</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p>4175 Main Street Jupiter, Florida 33458 United States</p>
+              </div>
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p>hometakesmedia@hometakes.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Call:</h4>
+                <p>561-623-9433</p>
+              </div>
+<!-- 
+              <iframe src="https://www.google.com/maps?q=4175%20Main%20Street%20Jupiter%2C%20Florida%2033458%20United%20States&z=15&t=&ie=UTF8&output=embed" width="600" height="450"></iframe><noscript> Full functionality of this site requires JavaScript to be enabled. Learn how to <a href="https://javascriptdownload.org/">Download JavaScript</a> in your browser.</noscript> -->
+              
+              <iframe src="https://www.google.com/maps?q=4175%20Main%20Street%20Jupiter%2C%20Florida%2033458%20United%20States&z=15&t=&ie=UTF8&output=embed" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End Contact Section -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <!-- <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3>Hometakes</h3>
+            <p>
+              4175 Main Street <br>
+              Jupiter, Florida 33458<br>
+              United States <br><br>
+              <strong>Phone:</strong> 561-623-9433<br>
+              <strong>Email:</strong> hometakesmedia@hometakes.com<br>
+            </p>
+          </div>
+
+          <!-- <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div> -->
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">HDR Photograpy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Aerial Photography (using drone) </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Real Twilight Photography</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Twilight Enhancement</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Walk Through Video Tour</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Matterport 3D Tour</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Follow Us!</p>
+            <div class="social-links mt-3">
+              <a href="https://twitter.com/Hometakes" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/VideoToursandPhotography" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.google.com/+HometakesComNorthPalmBeach" class="google-plus"><i class="bx bxl-google-plus"></i></a>
+              <a href=" https://www.youtube.com/user/Hometakes" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.linkedin.com/in/hometakes-tours-803194a5" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              
+             
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits"> -->
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div> -->
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/jquery/jquery.queryloader2.min.js"></script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- For view our photography and videograph -->
+  <script src="assets/js/custom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.18.0/sweetalert2.min.js"></script>
+  <script src="assets/js/juicebox-min.js"></script>
+  <script src="assets/js/mediaelement-and-player.min.js"></script>
+  <script src="assets/js/mediaelement.min.js"></script>
+  <script src="assets/js/mediaelementplayer.min.js"></script>
+  <script src="assets/js/me-featuredetection.js"></script>
+  <script src="assets/js/mep-feature-fullscreen.js"></script>
+  
+  <!-- <script type="text/javascript" src="https://www.hometakes.com/sites/all/libraries/juicebox/juicebox.js"></script> -->
+
+
+</body>
+</html>
+  
+<div class="exit-fullscreen-mobile" style="display: none;">
+  <a href="#"><i class="fa fa-compress"></i> Exit Fullscreen</a>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var b_slider_1 = $('#b-slider-3').html();
+    //console.log("b_slider_1: "+b_slider_1);
+
+  });
+</script>
