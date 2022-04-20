@@ -1,6 +1,1 @@
-Thanks for downloading this template!
-
-Template Name: Arsha
-Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Is a web-based application producing top-quality Real Video Tours as well as Photography for Realtors. The Virtual and slideshow tour is quickly becoming a thing of the past.
